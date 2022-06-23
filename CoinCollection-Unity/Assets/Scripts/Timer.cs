@@ -97,5 +97,25 @@ public class Timer : MonoBehaviour
         return string.Format("{0:00}:{1:00}", minutes, seconds); //retrun time as string
     }//end DisplayTime
 
-
+    public void AddTime()
+    {
+        if (timerStopped)
+        { // check to see if timer has stoped
+            LevelEnd();
+        }
+        else
+        {
+            if (currentTime > 0)
+            {
+                // if still time, update timer countdown
+                currentTime +=1;
+            }
+            else
+            {//if the timer is less than zero
+                currentTime = 0; //set time to zero
+                timerStopped = true; //stop the timer
+            }
+            Debug.Log(DisplayTime(currentTime));
+        }
+    }
 }
